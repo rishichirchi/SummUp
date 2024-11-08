@@ -13,12 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class KafkaConsumerService {
+public class KafkaConsumerServices {
     private static final String TOPIC = "public-chats";
     private final SimpMessagingTemplate simpMessagingTemplate;
     private final List<ChatMessage> chatMessages = new ArrayList<>();
 
-    public KafkaConsumerService(SimpMessagingTemplate simpMessagingTemplate){
+    public KafkaConsumerServices(SimpMessagingTemplate simpMessagingTemplate){
         this.simpMessagingTemplate = simpMessagingTemplate;
     }
 
