@@ -38,9 +38,6 @@ public class WebSocketController {
         return kafkaConsumerServices.getChatMessages();
     }
     
-    public void getMessages(){
-        kafkaConsumerServices.getChatMessages();
-    }
 
     @MessageMapping("/chat.addUser")
     @SendTo("/chat/public")
@@ -48,7 +45,7 @@ public class WebSocketController {
         log.info("User added: {}", message.getSender());
 
         if(headerAccessor != null && headerAccessor.getSessionAttributes() != null){
-            headerAccessor.getSessionAttributes().put("username", message.getSender());
+            log.info("Session attributes: {}", headerAccessor.getSessionAttributes());
         }
         else{
             log.error("Header accessor is null or session attributes are null");
