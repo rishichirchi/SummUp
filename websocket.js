@@ -15,11 +15,11 @@ stompClient.connect({}, (frame) => {
 
     // Send a message to the server (to /app/chat.sendMessage)
     const chatMessage = {
-        sender: "Khushi",
+        sender: "Rishi",
         content: "I am learning golang!"
     };
 
-    stompClient.send("/app/chat.removeUser", {}, JSON.stringify(chatMessage));
+    stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
 });
 
 axios.get('http://localhost:8080/getChats').then((response) => {
