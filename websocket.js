@@ -15,8 +15,8 @@ stompClient.connect({}, (frame) => {
 
     // Send a message to the server (to /app/chat.sendMessage)
     const chatMessage = {
-        sender: "Rishi",
-        content: "I am learning golang!"
+        sender: "Khushi",
+        content: "I am learning springboot!"
     };
 
     stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));

@@ -14,6 +14,7 @@ func KafkaConsumer(){
 		"bootstrap.servers":"localhost:9092",
 		"group.id": "moodpulse-consumer",
 		"auto.offset.reset": "earliest",
+		"debug": "consumer",
 	})
 
 	if err != nil{
@@ -31,6 +32,7 @@ func KafkaConsumer(){
 	log.Println("Listening to messges on 'public-chats' topic...")
 
 	for{
+		log.Println("Polling for messages...")
 		msg, err := consumer.ReadMessage(-1)
 
 		if err == nil{
