@@ -12,20 +12,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document("user")
+@Document("group-chat")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDetails {
+public class GroupChat {
     @Id
     private String id;
-
     @Indexed(unique = true)
-
-    @Field("username")
-    private String username;
-    private String password;
-    private boolean loggedIn;
-    private List<String> groupList;
+    @Field("groupName")
+    private String groupName;
+    private List<UserDetails> members;
+    private List<Message> messages;
+    private Message lastMessage;
 }

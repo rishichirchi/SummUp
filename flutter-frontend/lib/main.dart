@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/constants/theme.dart';
+import 'package:news_pulse/utils/router.dart';
 import 'package:news_pulse/view/home/screens/home_screen.dart';
 
 void main() {
@@ -12,11 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'SummUp',
       debugShowCheckedModeBanner: false,
       theme:theme,
-      home: const HomeScreen(),
+      routerConfig: router,
     );
   }
 }

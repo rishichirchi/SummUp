@@ -1,6 +1,8 @@
 package com.newspulse.springboot_backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,57 +16,54 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
     private final UserServices userServices;
 
-    public UserController(UserServices userServices){
+    public UserController(UserServices userServices) {
         this.userServices = userServices;
     }
 
     @PostMapping("/register")
     public ResponseEntity<String> createNewUser(@RequestBody UserDetails user) {
-        try{
+        try {
             userServices.createUser(user);
             return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
-    @PostMapping("/login/{username}")
-    public ResponseEntity<String> loginUser(@PathVariable String username){
-        try{
-            userServices.loginUser(username);
-            return ResponseEntity.status(HttpStatus.OK).body("User logged in successfully");
-        }
-        catch(IllegalArgumentException e){
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginUser(@RequestBody Map<String, String> userData) {
+        try {
+            UserDetails user = userServices.loginUser(userData);
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "User logged in successfully");
+            response.put("user", user);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
     @PostMapping("/logout/{username}")
-    public ResponseEntity<String> logoutUser(@PathVariable String username){
-        try{
+    public ResponseEntity<String> logoutUser(@PathVariable String username) {
+        try {
             userServices.logoutUser(username);
             return ResponseEntity.status(HttpStatus.OK).body("User logged out successfully");
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
     @PostMapping("/delete/{username}")
-    public ResponseEntity<String> deleteUser(@PathVariable String username){
-        try{
+    public ResponseEntity<String> deleteUser(@PathVariable String username) {
+        try {
             userServices.deleteUser(username);
             return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
@@ -75,13 +74,12 @@ public class UserController {
     }
 
     @GetMapping("/get-user/{username}")
-    public ResponseEntity<UserDetails> getUser(@PathVariable String username){
+    public ResponseEntity<UserDetails> getUser(@PathVariable String username) {
         UserDetails user = userServices.getUser(username);
-        if(user == null){
+        if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
-    
-    
+
 }

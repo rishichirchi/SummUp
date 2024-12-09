@@ -1,25 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:news_pulse/provider/auth/user_provider.dart';
 import 'package:news_pulse/view/home/widgets/chat_groups.dart';
+import 'package:news_pulse/view/home/widgets/logout_dialog.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    void showSignOutDialog(BuildContext context) async {
+      bool? result = await showDialog(
+        context: context,
+        builder: (context) => const LogoutDialog(),
+      );
+      setState(() {});
+      if (result == true) {
+        ref.read(userProvider.notifier).logOut();
+        context.go('/login');
+      }
+    }
+
+    String username = ref.watch(userProvider)!.username;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SummUp'),
+        title:  Text('Hey $username!'),
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.person_add_alt_1),
+            onPressed: (){},
+            icon: const Icon(Icons.group_add_outlined),
+          ),
+          const Gap(10),
+          IconButton(
+            onPressed: () => showSignOutDialog(context),
+            icon: const Icon(Icons.logout),
           ),
           const Gap(10)
         ],
