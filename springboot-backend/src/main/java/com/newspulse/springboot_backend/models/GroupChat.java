@@ -24,6 +24,7 @@ public class GroupChat {
     @Field("groupName")
     private String groupName;
     private List<UserDetails> members;
+    private String description;
     private List<Message> messages;
     private Message lastMessage;
 }

@@ -15,9 +15,9 @@ final router = GoRouter(
     path: '/signin',
     builder: (context, state) => const SignInScreen(),
   ),
-  GoRoute(path: '/login', builder: (context, state) =>  LoginScreen()),
+  GoRoute(path: '/login', builder: (context, state) =>  const LoginScreen()),
   GoRoute(
     path: '/chat',
-    builder: (context, state) => ChatScreen(),
+    builder: (context, state) => const ChatScreen(),
   ),
 ]);

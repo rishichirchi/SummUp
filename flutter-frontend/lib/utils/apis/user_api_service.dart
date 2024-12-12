@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:news_pulse/model/user.dart';
 
 class UserApiService {
-  static const String baseUrl = 'http://localhost:8080/user';
+  static const String baseUrl = 'http://192.168.196.94:8080/user';
 
   Future<bool> signIn(User user) async {
     log('in the service layer');
@@ -42,7 +42,7 @@ class UserApiService {
   Future<bool> logOut(String username) async {
     String url = '$baseUrl/logout/$username';
     try {
-      final response = await http.get(Uri.parse(url));
+      final response = await http.post(Uri.parse(url));
       if (response.statusCode == 200) {
         log(response.body);
         return true;

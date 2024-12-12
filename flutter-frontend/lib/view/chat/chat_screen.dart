@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatelessWidget {
+  const ChatScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +10,7 @@ class ChatScreen extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Group Name", style: TextStyle(fontSize: 18)),
+            const Text("Group Name", style: TextStyle(fontSize: 18)),
             Text(
               "3 participants",
               style: TextStyle(fontSize: 14, color: Colors.grey[300]),
@@ -17,11 +19,11 @@ class ChatScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],
@@ -42,7 +44,7 @@ class ChatScreen extends StatelessWidget {
               },
             ),
           ),
-          ChatInputField(),
+          const ChatInputField(),
         ],
       ),
     );
@@ -53,22 +55,22 @@ class ChatBubble extends StatelessWidget {
   final String message;
   final bool isSentByMe;
 
-  const ChatBubble({required this.message, required this.isSentByMe});
+  const ChatBubble({super.key, required this.message, required this.isSentByMe});
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: isSentByMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: isSentByMe ? Colors.green[300] : Colors.grey[300],
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-            bottomLeft: isSentByMe ? Radius.circular(12) : Radius.zero,
-            bottomRight: isSentByMe ? Radius.zero : Radius.circular(12),
+            topLeft: const Radius.circular(12),
+            topRight: const Radius.circular(12),
+            bottomLeft: isSentByMe ? const Radius.circular(12) : Radius.zero,
+            bottomRight: isSentByMe ? Radius.zero : const Radius.circular(12),
           ),
         ),
         child: Text(
@@ -84,9 +86,11 @@ class ChatBubble extends StatelessWidget {
 }
 
 class ChatInputField extends StatelessWidget {
+  const ChatInputField({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controller = TextEditingController();
+    final TextEditingController controller = TextEditingController();
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -98,7 +102,7 @@ class ChatInputField extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
-              controller: _controller,
+              controller: controller,
               decoration: InputDecoration(
                 hintText: "Type a message",
                 border: OutlineInputBorder(
@@ -107,7 +111,7 @@ class ChatInputField extends StatelessWidget {
                 ),
                 filled: true,
                 fillColor: Colors.grey[200],
-                contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               ),
             ),
           ),
@@ -116,10 +120,10 @@ class ChatInputField extends StatelessWidget {
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.send, color: Colors.green),
+            icon: const Icon(Icons.send, color: Colors.green),
             onPressed: () {
               // Send message logic (to be added later)
-              _controller.clear();
+              controller.clear();
             },
           ),
         ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/constants/theme.dart';
 import 'package:news_pulse/utils/router.dart';
-import 'package:news_pulse/view/home/screens/home_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

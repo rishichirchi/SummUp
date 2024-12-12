@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:news_pulse/provider/auth/user_provider.dart';
 import 'package:news_pulse/view/home/widgets/chat_groups.dart';
+import 'package:news_pulse/view/home/widgets/create_group_dialog.dart';
 import 'package:news_pulse/view/home/widgets/logout_dialog.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,6 +17,16 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    void showCreateGroupDialog(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (context) => const CreateGroupDialog(),
+      );
+
+      setState(() {
+        
+      });
+    }
     void showSignOutDialog(BuildContext context) async {
       bool? result = await showDialog(
         context: context,
@@ -36,7 +47,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: () => showCreateGroupDialog(context),
             icon: const Icon(Icons.group_add_outlined),
           ),
           const Gap(10),

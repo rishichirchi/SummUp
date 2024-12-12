@@ -17,5 +17,5 @@ public class Message {
     private String message;
     private UserDetails user;
     private String groupName;
-    private long timestamp;
+    private String timestamp;
 }

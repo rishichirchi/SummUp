@@ -25,7 +25,7 @@ class LogoutDialog extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  side: BorderSide(color: Colors.white, width: 1),
+                  side: const BorderSide(color: Colors.white, width: 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -41,7 +41,7 @@ class LogoutDialog extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
-                  side: BorderSide(color: Colors.white, width: 1),
+                  side: const BorderSide(color: Colors.white, width: 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
