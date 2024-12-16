@@ -1,7 +1,10 @@
 package com.newspulse.springboot_backend.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.swing.GroupLayout.Group;
 
 import org.springframework.stereotype.Service;
 
@@ -47,10 +50,20 @@ public class GroupChatService {
     public List<GroupChat> getGroupsForUser(String username) {
         try{
             List<GroupChat> allGroups = groupChatRepository.findAll();
+            List<GroupChat> userGroups = new ArrayList<GroupChat>();
 
-        List<GroupChat> userGroups = allGroups.stream()
-                .filter(group -> group.getMembers().stream().anyMatch(member -> member.getUsername().equals(username)))
-                .collect(Collectors.toList());
+            for (GroupChat group : allGroups) {
+                log.info("Checking group: " + group.getGroupName());
+                for (UserDetails user : group.getMembers()) {
+                    log.info("Checking member: " + user.getUsername());
+                    if (user.getUsername() != null && user.getUsername().trim().equals(username.trim())) {
+                        log.info("User matched: " + user.getUsername());
+                        userGroups.add(group);
+                        break;
+                    }
+                }
+            }
+            
         log.info("In service, user is part of the following groups: " + userGroups);
         return userGroups;
         } catch (Exception e) {

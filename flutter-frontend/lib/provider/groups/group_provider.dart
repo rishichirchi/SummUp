@@ -25,15 +25,13 @@ class GroupNotifier extends StateNotifier<List<Group>> {
       getGroups(members[0].username);
       return true;
     }
-
     return false;
   }
 
-  Future<List<Group>> getGroups(String username) async {
+  Future<void> getGroups(String username) async {
+    state = [];
     List<Group> groups = await apiService.getGroupsForUser(username);
     state = groups;
-
-    return groups;
   }
 }
 

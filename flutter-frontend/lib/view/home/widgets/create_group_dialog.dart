@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/model/message.dart';
@@ -54,7 +55,7 @@ class _CreateGroupDialogState extends ConsumerState<CreateGroupDialog> {
       actions: [
         // Cancel Button
         TextButton(
-          onPressed: () async{
+          onPressed: () async {
             Navigator.of(context).pop();
           },
           child: const Text('Cancel'),
@@ -67,17 +68,15 @@ class _CreateGroupDialogState extends ConsumerState<CreateGroupDialog> {
               final description = _descriptionController.text.trim();
               final user = ref.watch(userProvider);
               final List<Message> messages = []; // Empty list for messages
-              final Message? lastMessage = null;
+              const Message? lastMessage = null;
 
               ref.read(groupProvider.notifier).createGroup(
                   groupName, [user!], description, messages, lastMessage);
 
+        
+
               // Pass data back to the parent widget
-              Navigator.of(context).pop({
-                'groupName': groupName,
-                'members': ['self'], // Include self as the initial member
-                'description': description,
-              });
+              Navigator.of(context).pop();
             }
           },
           child: const Text('Create Group'),

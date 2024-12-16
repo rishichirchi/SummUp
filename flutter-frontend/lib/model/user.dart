@@ -12,13 +12,30 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      username: json['user']['username'],
-      password: json['user']['password'],
-      loggedIn: json['user']['loggedIn'],
-      groupList: List<String>.from(json['user']['groupList']),
-    );
+    if (json.containsKey('user')) {
+      return User(
+        username: json['user']['username'],
+        password: json['user']['password'],
+        loggedIn: json['user']['loggedIn'],
+        groupList: List<String>.from(json['user']['groupList']),
+      );
+    } else {
+      // Handle flat structure
+      return User(
+        username: json['username'],
+        password: json['password'],
+        loggedIn: json['loggedIn'],
+        groupList: List<String>.from(json['groupList']),
+      );
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'username': username,
+      'password': password,
+      'loggedIn': loggedIn,
+      'groupList': groupList,
+    };
   }
 }
-
-

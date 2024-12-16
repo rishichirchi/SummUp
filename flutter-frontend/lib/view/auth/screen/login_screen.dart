@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_pulse/provider/auth/user_provider.dart';
+import 'package:news_pulse/provider/groups/group_provider.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -97,6 +98,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   );
 
                   if (response){
+                    var username = ref.read(userProvider)!.username;
+                    ref.read(groupProvider.notifier).getGroups(username);
                     context.go('/home');
                   }
                   else{

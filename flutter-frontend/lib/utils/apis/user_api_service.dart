@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:news_pulse/model/user.dart';
 
 class UserApiService {
-  static const String baseUrl = 'http://192.168.196.94:8080/user';
+  static const String baseUrl = 'http://192.168.193.94:8080/user';
 
   Future<bool> signIn(User user) async {
     log('in the service layer');

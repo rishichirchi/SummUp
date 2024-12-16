@@ -17,16 +17,17 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    
+
     void showCreateGroupDialog(BuildContext context) {
       showDialog(
         context: context,
         builder: (context) => const CreateGroupDialog(),
       );
 
-      setState(() {
-        
-      });
+      setState(() {});
     }
+
     void showSignOutDialog(BuildContext context) async {
       bool? result = await showDialog(
         context: context,
@@ -43,7 +44,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title:  Text('Hey $username!'),
+        title: Text('Hey $username!'),
         centerTitle: true,
         actions: [
           IconButton(

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:news_pulse/model/group.dart';
 
 class GroupApiService {
-  static const String baseUrl = 'http://192.168.196.94:8080';
+  static const String baseUrl = 'http://192.168.193.94:8080';
 
   Future<String?> createGroupChat(Group group) async {
     const String url = '$baseUrl/createGroupChat';
@@ -45,36 +45,32 @@ class GroupApiService {
     }
   }
 
-  Future<List<Group>> getGroupsForUser(String username) async {
-    String url = '$baseUrl/getGroupsForUser/$username';
+    Future<List<Group>> getGroupsForUser(String username) async {
+      String url = '$baseUrl/getGroupsForUser/$username';
 
-    try {
-      final response = await http.get(Uri.parse(url));
+      try {
+        final response = await http.get(Uri.parse(url));
 
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        List<Group> groups = [];
+        if (response.statusCode == 200) {
+          var data = jsonDecode(response.body);
+          List<Group> groups = [];
 
-        log(data.toString());
+          log(data.toString());
 
-        for (var group in data['groups']) {
-          groups.add(Group(
-            groupName: group['groupName'],
-            members: group['members'],
-            description: group['description'],
-            messages: group['messages'],
-            lastMessage: group['lastMessage'],
-          ));
+          for (var group in data['groups']) {
+            groups.add(Group.fromJson(group));
+          }
+
+          log("Groups List after json decode:" + groups.toString());
+
+          return groups;
+        } else {
+          log(response.body);
+          return [];
         }
-
-        return groups;
-      } else {
-        log(response.body);
+      } catch (e) {
+        log("There is an exception: "+ e.toString());
         return [];
       }
-    } catch (e) {
-      log(e.toString());
-      return [];
     }
-  }
 }
