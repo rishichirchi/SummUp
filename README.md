@@ -1,6 +1,6 @@
 # SummUp
 
-MoodPulse is an Emotion-Aware Chat Companion app designed to enhance chat experiences by analyzing the sentiment of ongoing conversations and providing real-time feedback on the chat's mood. Using a combination of WebSocket communication, Kafka message streaming, and sentiment analysis, MoodPulse generates insights that help users understand the emotional tone of their chat interactions.
+SummUp is an Emotion-Aware Chat Companion app designed to enhance chat experiences by analyzing the sentiment of ongoing conversations and providing real-time feedback on the chat's mood. Using a combination of WebSocket communication, Kafka message streaming, and sentiment analysis, MoodPulse generates insights that help users understand the emotional tone of their chat interactions.
 
 ## Table of Contents
 
