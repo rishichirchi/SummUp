@@ -12,6 +12,7 @@ import com.newspulse.springboot_backend.models.GroupChat;
 import com.newspulse.springboot_backend.models.Message;
 import com.newspulse.springboot_backend.models.UserDetails;
 import com.newspulse.springboot_backend.repository.GroupChatRepository;
+import com.newspulse.springboot_backend.repository.UserDetailsRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,9 +20,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GroupChatService {
     final GroupChatRepository groupChatRepository;
+    final UserDetailsRepository userDetailsRepository;
 
-    public GroupChatService(GroupChatRepository groupChatRepository) {
+    public GroupChatService(GroupChatRepository groupChatRepository, UserDetailsRepository userDetailsRepository) {
         this.groupChatRepository = groupChatRepository;
+        this.userDetailsRepository = userDetailsRepository;
     }
 
     public void createGroupChat(GroupChat groupChat) {
@@ -34,14 +37,18 @@ public class GroupChatService {
 
     public List<Message> getMessages(String groupName) {
         GroupChat groupChat = groupChatRepository.findByGroupName(groupName);
+        log.info("Here is the GroupChat that you want to get messages from"+groupChat);
         return groupChat.getMessages();
     }
 
-    public void addNewMember(String groupName, UserDetails user) {
+    public void addNewMember(String groupName, String username) {
         try {
             GroupChat groupChat = groupChatRepository.findByGroupName(groupName);
+            UserDetails user = userDetailsRepository.findByUsername(username);
             groupChat.getMembers().add(user);
+            groupChatRepository.save(groupChat);
             user.getGroupList().add(groupName);
+            userDetailsRepository.save(user);
         } catch (Exception e) {
             throw new IllegalArgumentException("Group chat does not exist");
         }

@@ -33,6 +33,12 @@ class GroupNotifier extends StateNotifier<List<Group>> {
     List<Group> groups = await apiService.getGroupsForUser(username);
     state = groups;
   }
+
+  Future<void> addMember(String groupName, String username) async{
+    await apiService.addMember(groupName, username);
+  }
+
+  
 }
 
 final apiServiceProvider =

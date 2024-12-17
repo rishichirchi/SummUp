@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import 'package:news_pulse/model/group.dart';
+import 'package:news_pulse/model/message.dart';
 
 class GroupApiService {
   static const String baseUrl = 'http://192.168.193.94:8080';
@@ -73,4 +74,25 @@ class GroupApiService {
         return [];
       }
     }
+
+    Future<bool> addMember(String groupName, String username) async {
+      String url = '$baseUrl/addMember/$groupName/$username';
+
+      try {
+        final response = await http.post(Uri.parse(url));
+
+        if (response.statusCode == 200) {
+          log(response.body);
+          return true;
+        } else {
+          log(response.body);
+          return false;
+        }
+      } catch (e) {
+        log(e.toString());
+        return false;
+      }
+    }
+
+    
 }

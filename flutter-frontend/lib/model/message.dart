@@ -4,13 +4,13 @@ class Message {
   final String message;
   final User user;
   final String groupName;
-  final String timeStamp;
+  final String timestamp;
 
   Message({
     required this.message,
     required this.user,
     required this.groupName,
-    required this.timeStamp,
+    required this.timestamp,
   });
 
   factory Message.fromJson(Map<String, dynamic> json){
@@ -18,7 +18,7 @@ class Message {
       message: json['message'],
       user: User.fromJson(json['user']),
       groupName: json['groupName'],
-      timeStamp: json['timeStamp'],
+      timestamp: json['timestamp'],
     );
   }
 
@@ -27,7 +27,7 @@ class Message {
       'message': message,
       'user': user.toJson(),
       'groupName': groupName,
-      'timeStamp': timeStamp,
+      'timestamp': timestamp,
     };
   }
 }

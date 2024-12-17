@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news_pulse/provider/auth/user_provider.dart';
+import 'package:news_pulse/provider/groups/group_provider.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
   const SignInScreen({super.key});
@@ -103,6 +104,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                           await ref.read(userProvider.notifier).newUserSignIn(username, password);
 
                       if (isUserCreated) {
+                        var username = ref.read(userProvider)!.username;
+                    ref.read(groupProvider.notifier).getGroups(username);
                         context.go('/home');
                       }
                       else{

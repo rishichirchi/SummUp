@@ -19,6 +19,7 @@ public class MessagingService {
         try {
             GroupChat groupChat = groupChatRepository.findByGroupName(message.getGroupName());
             groupChat.getMessages().add(message);
+            groupChatRepository.save(groupChat);
         } catch (Exception e) {
             throw new IllegalArgumentException("Group chat does not exist");
         }

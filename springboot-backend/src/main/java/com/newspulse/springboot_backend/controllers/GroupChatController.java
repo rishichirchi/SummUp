@@ -48,10 +48,10 @@ public class GroupChatController {
         return ResponseEntity.status(HttpStatus.OK).body(groupChatService.getMessages(groupName));
     }
 
-    @PostMapping("/addMember/{groupName}")
-    public ResponseEntity<?> addMember(@PathVariable String groupName, @RequestBody UserDetails user) {
+    @PostMapping("/addMember/{groupName}/{username}")
+    public ResponseEntity<?> addMember(@PathVariable String groupName, @PathVariable String username) {
         try {
-            groupChatService.addNewMember(groupName, user);
+            groupChatService.addNewMember(groupName, username);
             Map<String, String> response = new HashMap<>();
             response.put("message", "User added successfully");
             return ResponseEntity.status(HttpStatus.OK).body(response);

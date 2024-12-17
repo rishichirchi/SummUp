@@ -15,5 +15,5 @@ final theme = ThemeData.dark().copyWith(
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Color(0xFF25D366),
   ),
-  textTheme: GoogleFonts.poppinsTextTheme()
+  textTheme: GoogleFonts.interTextTheme()
 );
