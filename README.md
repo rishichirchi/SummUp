@@ -1,4 +1,4 @@
-# MoodPulse
+# SummUp
 
 MoodPulse is an Emotion-Aware Chat Companion app designed to enhance chat experiences by analyzing the sentiment of ongoing conversations and providing real-time feedback on the chat's mood. Using a combination of WebSocket communication, Kafka message streaming, and sentiment analysis, MoodPulse generates insights that help users understand the emotional tone of their chat interactions.
 
@@ -15,7 +15,7 @@ MoodPulse is an Emotion-Aware Chat Companion app designed to enhance chat experi
 
 ## Project Overview
 
-In MoodPulse, two users can chat with each other in real time using WebSocket communication managed by a Spring Boot backend. Each message is analyzed for sentiment by a Go-based microservice, which returns the current mood of the conversation. This sentiment feedback is displayed in the Flutter app, allowing users to get a visual representation of the chat's emotional state through emojis and suggestions to uplift the mood.
+In SummUp, two users can chat with each other in real time using WebSocket communication managed by a Spring Boot backend. Each message is analyzed for sentiment by a Go-based microservice, which returns the current mood of the conversation. This sentiment feedback is displayed in the Flutter app, allowing users to get a visual representation of the chat's emotional state through emojis and suggestions to uplift the mood.
 
 ## Features
 
