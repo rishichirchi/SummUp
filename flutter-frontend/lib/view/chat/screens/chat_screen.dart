@@ -12,6 +12,7 @@ import 'package:news_pulse/provider/groups/group_provider.dart';
 import 'package:news_pulse/utils/websockets/websocket_service.dart';
 import 'package:news_pulse/view/chat/widgets/add_members_dialog.dart';
 import 'package:news_pulse/view/chat/widgets/chat_bubble.dart';
+import 'package:news_pulse/view/chat/widgets/chat_summary_dialog.dart';
 
 class ChatScreen extends ConsumerStatefulWidget {
   final Group group;
@@ -71,13 +72,21 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     setState(() {});
   }
 
+  void showSummary(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => ChatSummaryDialog(messages: ref.watch(messagesProvider)),
+    );
+
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Message> messages = ref.watch(messagesProvider);
     log(messages.toString());
 
     return Scaffold(
-      backgroundColor: Colors.black, // Dark background
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         leading: const BackButton(color: Colors.white),
@@ -126,6 +135,14 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                       ),
                     ),
                     controller: _messageController,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: IconButton(
+                    icon: const Icon(Icons.summarize, color: Colors.white),
+                    onPressed: () => showSummary(context),
                   ),
                 ),
                 const SizedBox(width: 8),

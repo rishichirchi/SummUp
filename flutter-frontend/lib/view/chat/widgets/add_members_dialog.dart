@@ -25,13 +25,6 @@ class _AddMembersDialogState extends ConsumerState<AddMembersDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Column(children: [
-              Text('Existing Members:'),
-              const SizedBox(height: 16),
-              // Existing Members
-              
-
-            ],),
             // Group Name Field
             TextFormField(
               controller: usernameController,
@@ -72,7 +65,7 @@ class _AddMembersDialogState extends ConsumerState<AddMembersDialog> {
               Navigator.of(context).pop();
             }
           },
-          child: const Text('Create Group'),
+          child: const Text('Add'),
         ),
       ],
     );

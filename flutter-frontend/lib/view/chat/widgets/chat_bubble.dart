@@ -29,7 +29,7 @@ class _ChatBubbleState extends ConsumerState<ChatBubble> {
         margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: isSent ? Colors.blue : Colors.grey[800],
+          color: isSent ? Colors.blue : const Color.fromARGB(255, 27, 202, 91),
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(12),
             topRight: const Radius.circular(12),
@@ -43,7 +43,7 @@ class _ChatBubbleState extends ConsumerState<ChatBubble> {
             if(!isSent)
               Text(
                 widget.message.user.username,
-                style: const TextStyle(color: Colors.grey, fontSize: 12),
+                style: const TextStyle(color: Colors.black, fontSize: 12),
               ),
             const SizedBox(width: 4),
             Text(
