@@ -27,7 +27,7 @@ In SummUp, two users can chat with each other in real time using WebSocket commu
 
 ## Architecture
 
-The workflow of the MoodPulse app is as follows:
+The workflow of the SummUp app is as follows:
 
 1. **Flutter App**: Users communicate via a chat interface.
 2. **Spring Boot Backend**: Manages WebSocket connections and routes chat messages to Kafka.
@@ -46,7 +46,7 @@ The workflow of the MoodPulse app is as follows:
 - **Backend**: Spring Boot, WebSocket
 - **Messaging Queue**: Apache Kafka
 - **Sentiment Analysis**: Go microservice with language model integration (e.g., Gemini)
-- **Database**: [Your choice, if needed for chat storage]
+- **Database**: MongoDB
 
 ## Setup and Installation
 
@@ -63,28 +63,28 @@ The workflow of the MoodPulse app is as follows:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/MoodPulse.git
-   cd MoodPulse
+   git clone https://github.com/your-username/SummUp.git
+   cd SummUp
 2. **Install and Run Kafka**
 Make sure Kafka is installed and running. Update application.properties to point to your Kafka instance.
 
 3. **Start the Spring Boot Backend**
 
 ```bash
-cd springboot_backend
+cd springboot-backend
 ./mvnw spring-boot:run
 Run the Go Microservice
 ```
 
 4. **Start the Go Microservice**
 ```bash
-cd go_microservice
+cd go-microservice
 go run main.go
 ```
 5. **Start the Flutter App**
 
 ```bash
-cd flutter_app
+cd flutter-app
 flutter run
 ```
 ## WebSocket Testing
@@ -97,7 +97,7 @@ View Mood Feedback: The app will display an emoji based on the sentiment analysi
 Suggestions to Improve Mood: If the sentiment is negative, MoodPulse provides suggestions for uplifting the chat's mood.
 
 ## Contributing
-We welcome contributions to MoodPulse! If you'd like to contribute, please follow these steps:
+We welcome contributions to SummUp! If you'd like to contribute, please follow these steps:
 
 Fork the repository.
 Create a new branch.
