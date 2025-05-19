@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/model/user.dart';
-import 'package:news_pulse/utils/apis/user_api_service.dart';
+import 'package:news_pulse/service/apis/user_api_service.dart';
 
 class UserNotifier extends StateNotifier<User?> {
   final UserApiService apiService;

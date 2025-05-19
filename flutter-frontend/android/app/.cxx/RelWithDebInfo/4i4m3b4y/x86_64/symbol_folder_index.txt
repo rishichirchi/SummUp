@@ -1,0 +1,1 @@
+/home/rishi/Desktop/NewsPulse/flutter-frontend/build/app/intermediates/cxx/RelWithDebInfo/4i4m3b4y/obj/x86_64

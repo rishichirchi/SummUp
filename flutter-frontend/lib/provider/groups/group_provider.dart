@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/model/group.dart';
 import 'package:news_pulse/model/message.dart';
 import 'package:news_pulse/model/user.dart';
-import 'package:news_pulse/utils/apis/group_api_service.dart';
+import 'package:news_pulse/service/apis/group_api_service.dart';
 
 class GroupNotifier extends StateNotifier<List<Group>> {
   final GroupApiService apiService;

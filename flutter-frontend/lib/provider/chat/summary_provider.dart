@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/model/message.dart';
-import 'package:news_pulse/utils/gemini/gemini_api_service.dart';
+import 'package:news_pulse/service/gemini/gemini_api_service.dart';
 
 class SummaryNotifier extends StateNotifier<Map<String, String>?> {
   final GeminiService apiService;

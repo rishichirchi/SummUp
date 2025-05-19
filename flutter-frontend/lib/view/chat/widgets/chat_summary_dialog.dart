@@ -29,6 +29,7 @@ class ChatSummaryDialog extends ConsumerWidget {
         ref.read(summaryProvider.notifier).updateSummary(messages);
 
         return Dialog(
+          shadowColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: SizedBox(
             width: 300,
@@ -46,7 +47,7 @@ class ChatSummaryDialog extends ConsumerWidget {
                         CircularProgressIndicator(),
                         SizedBox(height: 20),
                         Text('Fetching chat summary...',
-                            style: TextStyle(fontSize: 16)),
+                            style: TextStyle(fontSize: 16, color: Colors.yellow)),
                       ],
                     ),
                   );
@@ -62,15 +63,15 @@ class ChatSummaryDialog extends ConsumerWidget {
                       const Text(
                         "Chat Summary",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 18, fontWeight: FontWeight.bold, color: Colors.yellow),
                       ),
                       const SizedBox(height: 10),
                       Text("Summary: ${summaryState['summary']}",
-                          style: const TextStyle(fontSize: 16)),
+                          style: const TextStyle(fontSize: 16, color: Colors.yellow)),
                       const SizedBox(height: 10),
                       Text("Mood: ${summaryState['mood']}",
                           style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600)),
+                              fontSize: 16, fontWeight: FontWeight.w600, color: Colors.yellow)),
                       const SizedBox(height: 20),
                       Align(
                         alignment: Alignment.centerRight,

@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_pulse/constants/theme.dart';
-import 'package:news_pulse/utils/router.dart';
+import 'package:news_pulse/service/router.dart';
 
 Future<void> main() async {
 WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized

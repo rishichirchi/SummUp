@@ -9,7 +9,7 @@ import 'package:news_pulse/model/user.dart';
 import 'package:news_pulse/provider/auth/user_provider.dart';
 import 'package:news_pulse/provider/chat/messages_provider.dart';
 import 'package:news_pulse/provider/groups/group_provider.dart';
-import 'package:news_pulse/utils/websockets/websocket_service.dart';
+import 'package:news_pulse/service/websockets/websocket_service.dart';
 import 'package:news_pulse/view/chat/widgets/add_members_dialog.dart';
 import 'package:news_pulse/view/chat/widgets/chat_bubble.dart';
 import 'package:news_pulse/view/chat/widgets/chat_summary_dialog.dart';

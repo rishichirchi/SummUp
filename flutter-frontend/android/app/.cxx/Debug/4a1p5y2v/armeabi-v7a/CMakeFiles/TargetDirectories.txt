@@ -1,0 +1,2 @@
+/home/rishi/Desktop/NewsPulse/flutter-frontend/android/app/.cxx/Debug/4a1p5y2v/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/rishi/Desktop/NewsPulse/flutter-frontend/android/app/.cxx/Debug/4a1p5y2v/armeabi-v7a/CMakeFiles/rebuild_cache.dir
