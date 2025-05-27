@@ -60,6 +60,7 @@ pipeline {
             steps {
                 echo '🌐 App available at:'
                 sh 'kubectl get svc -n default'
+                sh 'kubectl port-forward service/devops-springboot-service 8080:80'
             }
         }
     }
