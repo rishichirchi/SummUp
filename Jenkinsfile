@@ -42,12 +42,12 @@ pipeline {
         //     }
         // }
 
-        stage('Start Minikube') {
-            steps {
-                echo '⚙️ Starting Minikube...'
-                sh 'minikube start || echo "Already running"'
-            }
-        }
+        // stage('Start Minikube') {
+        //     steps {
+        //         echo '⚙️ Starting Minikube...'
+        //         sh 'minikube start || echo "Already running"'
+        //     }
+        // }
 
         stage('Deploy to Kubernetes') {
             steps {
