@@ -2,14 +2,15 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:news_pulse/constants/baseurl.dart';
 import 'package:news_pulse/model/user.dart';
 
+
 class UserApiService {
-  static const String baseUrl = 'http://3.7.79.69:8081/user';
 
   Future<bool> signIn(User user) async {
     log('in the service layer');
-    const String url = '$baseUrl/register';
+    String url = '$baseUrl/user/register';
     var body = jsonEncode({
       'username': user.username,
       'password': user.password,
@@ -40,7 +41,7 @@ class UserApiService {
   }
 
   Future<bool> logOut(String username) async {
-    String url = '$baseUrl/logout/$username';
+    String url = '$baseUrl/user/logout/$username';
     try {
       final response = await http.post(Uri.parse(url));
       if (response.statusCode == 200) {
@@ -57,7 +58,7 @@ class UserApiService {
   }
 
   Future<User?> login(Map<String, String> userData) async {
-    String url = '$baseUrl/login';
+    String url = '$baseUrl/user/login';
     var body = jsonEncode(userData);
     var headers = {'Content-Type': 'application/json'};
     try {

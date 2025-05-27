@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import 'package:news_pulse/model/group.dart';
+import 'package:news_pulse/constants/baseurl.dart';
 
 class GroupApiService {
-  static const String baseUrl = 'http://3.7.79.69:8081';
 
   Future<String?> createGroupChat(Group group) async {
-    const String url = '$baseUrl/createGroupChat';
+     String url = '$baseUrl/createGroupChat';
     log("in create group service");
 
     log("before try catch block");

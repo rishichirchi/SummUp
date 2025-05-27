@@ -3,9 +3,9 @@ import 'dart:developer';
 
 import 'package:news_pulse/model/message.dart';
 import 'package:http/http.dart' as http;
+import 'package:news_pulse/constants/baseurl.dart';
 
 class MessageApiService {
-    static const String baseUrl = 'http://3.7.79.69:8081';
 
   Future<List<Message>> getMessages(String groupName) async{
       String url = '$baseUrl/getMessages/$groupName';

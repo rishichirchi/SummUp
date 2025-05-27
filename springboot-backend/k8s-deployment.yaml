@@ -15,6 +15,7 @@ spec:
       containers:
         - name: devops-springboot-container
           image: rishichirchi/devops-springboot-backend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
 ---
@@ -29,4 +30,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: NodePort
+  type: LoadBalancer

@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:news_pulse/model/message.dart';
 import 'package:stomp_dart_client/stomp_dart_client.dart';
+import 'package:news_pulse/constants/baseurl.dart';
 
 class WebsocketService {
   StompClient? stompClient;
@@ -14,7 +15,7 @@ class WebsocketService {
   void connect() {
     stompClient = StompClient(
       config: StompConfig(
-        url: 'ws://3.7.79.69:8081/ws',
+        url: '$wsUrl/ws',
         onConnect: onConnect,
         onWebSocketError: (dynamic error) => log(
           'Error: $error',
