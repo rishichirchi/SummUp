@@ -45,7 +45,7 @@ pipeline {
         stage('Start Minikube') {
             steps {
                 echo '⚙️ Starting Minikube...'
-                sh 'sudo minikube start || echo "Already running"'
+                sh 'minikube start || echo "Already running"'
             }
         }
 
