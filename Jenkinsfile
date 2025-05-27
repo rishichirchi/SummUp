@@ -59,7 +59,7 @@ pipeline {
         stage('Show App URL') {
             steps {
                 echo '🌐 App available at:'
-                sh 'minikube service devops-springboot-service --url'
+                sh 'kubectl get svc -n default'
             }
         }
     }
